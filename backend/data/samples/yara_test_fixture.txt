@@ -1,0 +1,3 @@
+This file exists to prove the ARGUS YARA engine works.
+It is harmless text.
+Marker: ARGUS-YARA-TEST-FIXTURE-7f3a9c21-harmless

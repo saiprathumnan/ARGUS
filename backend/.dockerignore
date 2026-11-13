@@ -1,0 +1,7 @@
+__pycache__
+*.pyc
+argus.db*
+storage
+datasets
+.pytest_cache
+tests

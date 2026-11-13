@@ -1,0 +1,6 @@
+Received: from relay.unknown-host.example (relay.unknown-host.example [203.0.113.150]) by mx.corp.example with ESMTP id 55aa; Wed, 04 Nov 2026 07:01:02 +0000
+From: "IT Helpdesk" <helpdesk@corp-support.example>
+To: all-staff@corp.example
+Subject: Mailbox storage notice
+Date: Wed, 04 Nov 2026 07:01:00 +0000
+Message-ID: <a1b2c3@corp-support.example>

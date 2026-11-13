@@ -1,0 +1,15 @@
+Return-Path: <news@updates.example.org>
+Received: from mx.corp.example (mx.corp.example [10.0.0.25]) by mail.corp.example with ESMTP id 9c1d; Mon, 02 Nov 2026 14:00:05 +0000
+Received: from out.updates.example.org (out.updates.example.org [192.0.2.10]) by mx.corp.example with ESMTP id 1a2b; Mon, 02 Nov 2026 14:00:03 +0000
+Authentication-Results: mx.corp.example; spf=pass smtp.mailfrom=updates.example.org; dkim=pass header.d=example.org; dmarc=pass header.from=example.org
+From: "Example Org Newsletter" <news@updates.example.org>
+To: priya.n@corp.example
+Subject: November engineering digest
+Date: Mon, 02 Nov 2026 14:00:00 +0000
+Message-ID: <digest-2026-11@updates.example.org>
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+
+<html><body><p>Hello,</p><p>This month: a write-up on our storage migration and notes from the platform team offsite.</p>
+<p><a href="https://www.example.org/blog/2026/11/storage-migration">Read the storage migration write-up</a></p>
+<p>You are receiving this because you subscribed to the engineering digest.</p></body></html>

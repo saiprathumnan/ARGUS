@@ -1,0 +1,14 @@
+{
+  "_notice": "SAMPLE intelligence bundled for offline mode and demos. Every indicator is fictional and uses reserved documentation ranges (RFC 5737 addresses, .example / .test / invented domains). These records do NOT describe real infrastructure. Reliability is therefore 'sample' and ARGUS never promotes a finding to confirmed_malicious on sample intelligence.",
+  "generated": "2026-11-11",
+  "records": [
+    {"type": "ip", "value": "203.0.113.66", "verdict": "malicious", "summary": "Sample record: listed as command-and-control endpoint in fictional campaign 'Amber Lattice'", "reference": "argus-sample://campaigns/amber-lattice"},
+    {"type": "ip", "value": "198.51.100.23", "verdict": "malicious", "summary": "Sample record: SSH brute-force source reported by multiple fictional sensors", "reference": "argus-sample://feeds/ssh-bruteforce"},
+    {"type": "ip", "value": "203.0.113.150", "verdict": "suspicious", "summary": "Sample record: bulletproof hosting range in fictional feed", "reference": "argus-sample://feeds/hosting"},
+    {"type": "domain", "value": "paypa1-secure-login.example", "verdict": "malicious", "summary": "Sample record: credential phishing landing page in fictional campaign 'Amber Lattice'", "reference": "argus-sample://campaigns/amber-lattice"},
+    {"type": "domain", "value": "paypa1.com.account-verify.example", "verdict": "malicious", "summary": "Sample record: credential phishing host", "reference": "argus-sample://feeds/phishing"},
+    {"type": "domain", "value": "cdn-update-check.example", "verdict": "malicious", "summary": "Sample record: beacon check-in domain in fictional campaign 'Amber Lattice'", "reference": "argus-sample://campaigns/amber-lattice"},
+    {"type": "domain", "value": "example.com", "verdict": "clean", "summary": "Sample record: IANA reserved documentation domain", "reference": "https://www.iana.org/help/example-domains"},
+    {"type": "ip", "value": "192.0.2.10", "verdict": "clean", "summary": "Sample record: documentation address with no reports", "reference": "argus-sample://feeds/none"}
+  ]
+}

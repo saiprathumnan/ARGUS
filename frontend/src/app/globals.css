@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+html, body { height: 100%; background: #080A0E; color: #B9C2CE; }
+body { font-family: Inter, system-ui, sans-serif; font-size: 13px; line-height: 20px; -webkit-font-smoothing: antialiased; font-feature-settings: 'cv11', 'ss01', 'tnum'; }
+::selection { background: rgba(255,157,53,0.3); color: #fff; }
+* { scrollbar-width: thin; scrollbar-color: #2a323e transparent; }
+*::-webkit-scrollbar { width: 8px; height: 8px; } *::-webkit-scrollbar-thumb { background: #2a323e; } *::-webkit-scrollbar-track { background: transparent; }
+:focus-visible { outline: 1px solid #FF9D35; outline-offset: 2px; }
+button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+
+@layer components {
+  /* Smoked-glass panel: one translucent layer, hairline border, no glow. */
+  .panel { @apply border border-line bg-graphite/80 backdrop-blur-md; }
+  .panel-solid { @apply border border-line bg-graphite; }
+  .micro { @apply font-mono text-micro uppercase text-titanium-mute; }
+  .data { @apply font-mono text-data text-titanium; }
+  .h-display { @apply font-display font-medium tracking-tight text-paper; }
+  .btn { @apply inline-flex shrink-0 items-center whitespace-nowrap justify-center gap-2 border border-line-strong px-3 h-8 font-mono text-label uppercase text-titanium transition-colors hover:border-titanium hover:text-paper disabled:opacity-40 disabled:pointer-events-none; }
+  .btn-primary { @apply btn border-amber bg-amber text-obsidian hover:bg-[#ffb463] hover:text-obsidian hover:border-[#ffb463]; }
+  .btn-ghost { @apply btn border-transparent hover:border-line-strong; }
+  .field { @apply w-full border border-line-strong bg-obsidian/60 px-3 h-9 text-body text-paper placeholder:text-titanium-faint focus:border-amber focus:outline-none; }
+  .rule-t { @apply border-t border-line; }
+  /* Calibration ticks: the recurring instrument motif on panel headers. */
+  .ticks { background-image: repeating-linear-gradient(90deg, rgba(185,194,206,0.28) 0 1px, transparent 1px 8px); height: 5px; }
+  .grid-void { background-image: linear-gradient(rgba(185,194,206,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(185,194,206,0.035) 1px, transparent 1px); background-size: 48px 48px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+/* React Flow, restyled to the token system */
+.react-flow__attribution { display: none; }
+.react-flow__controls { box-shadow: none; border: 1px solid rgba(185,194,206,0.24); }
+.react-flow__controls-button { background: #151A22 !important; border-bottom: 1px solid rgba(185,194,206,0.12) !important; fill: #B9C2CE !important; }
+.react-flow__controls-button svg { fill: #B9C2CE; }
+.react-flow__controls-button:hover { background: #1D242E !important; }
+.react-flow__edge-path { stroke: rgba(185,194,206,0.3); }
+.react-flow__minimap { background: #151A22 !important; border: 1px solid rgba(185,194,206,0.24); }
+.react-flow__minimap svg { background: #151A22; }
+
+/* Print: the dossier becomes a paper document */
+@media print {
+  @page { size: A4; margin: 16mm 15mm; }
+  html, body { background: #fff !important; color: #151A22 !important; height: auto; }
+  .no-print { display: none !important; }
+  .print-root { position: static !important; overflow: visible !important; height: auto !important; padding: 0 !important; margin: 0 !important; }
+  .dossier { background: #fff !important; color: #151A22 !important; border: 0 !important; box-shadow: none !important; max-width: none !important; padding: 0 !important; }
+  .dossier * { color: inherit; }
+  .dossier .avoid-break { break-inside: avoid; }
+  .dossier h2 { break-after: avoid; }
+}

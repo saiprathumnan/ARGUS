@@ -1,0 +1,187 @@
+[
+ {
+  "id": "phishing-to-c2",
+  "title": "Phishing email to workstation beaconing",
+  "expected_verdict": "suspicious",
+  "description": "A phishing email, a workstation packet capture and endpoint events that share infrastructure. Exercises cross-source correlation.",
+  "evidence": [
+   {
+    "kind": "eml",
+    "file": "phishing_email.eml"
+   },
+   {
+    "kind": "pcap",
+    "file": "workstation_capture.pcap"
+   },
+   {
+    "kind": "json_events",
+    "file": "endpoint_events.json"
+   }
+  ],
+  "expected_detectors": [
+   "email.link_text_mismatch",
+   "email.spf_fail",
+   "email.attachment_double_extension",
+   "network.beaconing",
+   "process.suspicious_powershell",
+   "correlation.delivery_to_contact",
+   "correlation.corroborated_indicator"
+  ]
+ },
+ {
+  "id": "phishing-email",
+  "title": "Suspicious phishing email",
+  "expected_verdict": "suspicious",
+  "description": "Single spoofed email with a deceptive link and disguised attachment.",
+  "evidence": [
+   {
+    "kind": "eml",
+    "file": "phishing_email.eml"
+   }
+  ],
+  "expected_detectors": [
+   "email.link_text_mismatch",
+   "email.reply_to_mismatch",
+   "email.dmarc_fail"
+  ]
+ },
+ {
+  "id": "benign-email",
+  "title": "Benign newsletter email",
+  "expected_verdict": "benign",
+  "description": "Authenticated newsletter with one ordinary link.",
+  "evidence": [
+   {
+    "kind": "eml",
+    "file": "benign_email.eml"
+   }
+  ],
+  "expected_detectors": []
+ },
+ {
+  "id": "suspicious-url",
+  "title": "Suspicious look-alike URL",
+  "expected_verdict": "suspicious",
+  "description": "Brand look-alike host with credential-themed path.",
+  "evidence": [
+   {
+    "kind": "url",
+    "url": "http://paypa1.com.account-verify.example/signin/update-billing?session=83hd72"
+   }
+  ],
+  "expected_detectors": [
+   "url.structure"
+  ]
+ },
+ {
+  "id": "benign-url",
+  "title": "Benign URL",
+  "expected_verdict": "benign",
+  "description": "Ordinary documentation URL.",
+  "evidence": [
+   {
+    "kind": "url",
+    "url": "https://www.example.org/docs/getting-started"
+   }
+  ],
+  "expected_detectors": []
+ },
+ {
+  "id": "ssh-brute-force",
+  "title": "SSH brute force with successful login",
+  "expected_verdict": "suspicious",
+  "description": "Linux auth log: password spraying from one address followed by a successful login.",
+  "evidence": [
+   {
+    "kind": "auth_log",
+    "file": "ssh_bruteforce_auth.log"
+   }
+  ],
+  "expected_detectors": [
+   "auth.password_spraying",
+   "auth.success_after_failures"
+  ]
+ },
+ {
+  "id": "suspicious-powershell",
+  "title": "Suspicious PowerShell event",
+  "expected_verdict": "suspicious",
+  "description": "One Sysmon process-creation event with an encoded download cradle.",
+  "evidence": [
+   {
+    "kind": "json_events",
+    "file": "suspicious_powershell.json"
+   }
+  ],
+  "expected_detectors": [
+   "process.suspicious_powershell"
+  ]
+ },
+ {
+  "id": "unusual-outbound",
+  "title": "Unusual outbound network traffic",
+  "expected_verdict": "suspicious",
+  "description": "Capture with tunnelling-shaped DNS queries and traffic to an uncommon port.",
+  "evidence": [
+   {
+    "kind": "pcap",
+    "file": "unusual_outbound.pcap"
+   }
+  ],
+  "expected_detectors": [
+   "network.dns_tunneling_pattern",
+   "network.suspicious_port"
+  ]
+ },
+ {
+  "id": "yara-fixture",
+  "title": "Harmless YARA test fixture",
+  "expected_verdict": "benign",
+  "description": "Text file carrying the ARGUS YARA self-test marker.",
+  "evidence": [
+   {
+    "kind": "file",
+    "file": "yara_test_fixture.txt"
+   }
+  ],
+  "expected_detectors": [
+   "file.yara_match"
+  ]
+ },
+ {
+  "id": "screenshot-lookalike",
+  "title": "Website screenshot similarity",
+  "expected_verdict": "suspicious",
+  "description": "Screenshot resembling a reference sign-in page, captured from an unrelated domain (fictional brands).",
+  "evidence": [
+   {
+    "kind": "screenshot",
+    "file": "lookalike_signin.jpg",
+    "source_url": "http://northwind-bank.secure-session.example/signin"
+   }
+  ],
+  "expected_detectors": [
+   "vision.reference_similarity",
+   "vision.lookalike_on_unrelated_domain"
+  ]
+ },
+ {
+  "id": "insufficient-evidence",
+  "title": "Conflicting / insufficient evidence",
+  "expected_verdict": "insufficient_evidence",
+  "description": "Bare email headers with no authentication results plus a URL on a domain that sample intelligence lists as clean.",
+  "evidence": [
+   {
+    "kind": "email_headers",
+    "file": "ambiguous_headers.txt"
+   },
+   {
+    "kind": "url",
+    "url": "https://example.com/account/overview"
+   }
+  ],
+  "expected_detectors": [
+   "email.no_auth_results"
+  ]
+ }
+]

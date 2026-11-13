@@ -1,0 +1,48 @@
+# ARGUS: PostgreSQL + backend + frontend. Copy .env.example to .env first.
+# The backend is not published to the host: the browser only talks to the frontend, which proxies /api.
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: argus
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: argus
+    volumes: [argus-db:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U argus -d argus"]
+      interval: 5s
+      retries: 10
+  backend:
+    build: ./backend
+    environment:
+      ARGUS_ENV: production
+      ARGUS_API_KEY: ${ARGUS_API_KEY:?set ARGUS_API_KEY in .env}
+      ARGUS_DATABASE_URL: postgresql+psycopg2://argus:${POSTGRES_PASSWORD}@db:5432/argus
+      ARGUS_STORAGE_DIR: /srv/argus/storage
+      ARGUS_CORS_ORIGINS: http://localhost:3000
+      ARGUS_INTEL_OFFLINE: ${ARGUS_INTEL_OFFLINE:-true}
+      ARGUS_ALLOW_NETWORK_FETCH: ${ARGUS_ALLOW_NETWORK_FETCH:-false}
+      ARGUS_VIRUSTOTAL_API_KEY: ${ARGUS_VIRUSTOTAL_API_KEY:-}
+      ARGUS_ABUSEIPDB_API_KEY: ${ARGUS_ABUSEIPDB_API_KEY:-}
+      ARGUS_OTX_API_KEY: ${ARGUS_OTX_API_KEY:-}
+      ARGUS_LLM_PROVIDER: ${ARGUS_LLM_PROVIDER:-none}
+      ARGUS_LLM_BASE_URL: ${ARGUS_LLM_BASE_URL:-http://host.docker.internal:11434/v1}
+      ARGUS_LLM_MODEL: ${ARGUS_LLM_MODEL:-llama3.1}
+      ARGUS_LLM_API_KEY: ${ARGUS_LLM_API_KEY:-}
+    volumes: [argus-evidence:/srv/argus/storage]
+    depends_on:
+      db: { condition: service_healthy }
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+  frontend:
+    build: ./frontend
+    environment:
+      ARGUS_BACKEND_URL: http://backend:8000
+      ARGUS_API_KEY: ${ARGUS_API_KEY}
+    ports: ["127.0.0.1:3000:3000"]
+    depends_on: [backend]
+volumes:
+  argus-db:
+  argus-evidence:
